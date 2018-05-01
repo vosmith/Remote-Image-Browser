@@ -125,6 +125,7 @@ class FileHashNodeTree:
         node = make_file(path, name, True, parent)
         fileMapping[str(node['id'])] = node
         pathMapping[curDirPath] = node
+        print("scanning directory {}".format(curDirPath))
         for root, dirs, files in os.walk(curDirPath):
             newDirs = list(dirs)
             del(dirs[:])

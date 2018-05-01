@@ -46,7 +46,9 @@ MediaButtons = function(evtSys, mediaLibrary) {
   document.addEventListener("keypress", function(e) {
     switch (e.key) {
     case ' ': self.play(e); break;
+    case "ArrowRight":
     case 'b': self.next(e); break;
+    case "ArrowLeft":
     case 'z': self.prev(e); break;
     case 's': self.shuffle(e); break;
     case 'i': self.nowPlaying(e); break;
@@ -70,11 +72,11 @@ MediaButtons.prototype.nowPlaying = function(ev) {
 }
 
 MediaButtons.prototype.next = function(ev) {
-  this.mediaLibrary.nextSong();
+  this.mediaLibrary.nextImage();
 }
 
 MediaButtons.prototype.prev = function(ev) {
-  this.mediaLibrary.prevSong();
+  this.mediaLibrary.prevImage();
 }
 
 MediaButtons.prototype.shuffle = function(ev) {

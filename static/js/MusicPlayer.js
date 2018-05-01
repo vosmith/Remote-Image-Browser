@@ -78,7 +78,7 @@ ImageLibrary.prototype.toggleNowPlaying = function(preventClose, forceClose) {
   var content = document.querySelector('[role="content"]');
   var state   = (forceClose || (!preventClose && !overlay.classList.contains("inactive")))
   overlay.classList.toggle("inactive", state);
-  content.classList.toggle("inactive", !state);
+  // content.classList.toggle("inactive", !state);
 }
 
 ImageLibrary.prototype.getFiles = function() {
@@ -324,7 +324,7 @@ ImageLibrary.prototype.displayMakeFolder = function(folderEntry, expanded, depth
   var panelHeader       = document.createElement("div");
   panelHeader.className = "folder-heading";
   panelHeader.setAttribute("role", "tab");
-  panelHeader.appendChild(this.displayMakeExcludeButton(folderEntry.id, panelHeader));
+  // panelHeader.appendChild(this.displayMakeExcludeButton(folderEntry.id, panelHeader));
 
   var icon = document.createElement("span");
   icon.className = "fa fa-folder-o";
@@ -517,31 +517,31 @@ ImageLibrary.prototype.updatePlayingEntry = function(entry, isPlaying) {
   var song = document.getElementById(entry.id);
   song.classList.toggle('playing-entry', isPlaying);
 
-  var shareBtn = null;
-  var urlBox = null;
-  if (!isPlaying) {
-    //shareBtn = document.querySelector('[role="share"]');
-    shareBtn = song.querySelector('[role="share"]');
-    if (shareBtn) song.removeChild(shareBtn);
-    urlBox = song.querySelector('[role="share-url"]');
-    if (urlBox) song.removeChild(urlBox);
-  } else {
-    shareBtn = document.createElement('a');
-    shareBtn.innerHTML = "share";
-    shareBtn.setAttribute("href", "#");
-    shareBtn.setAttribute("role", "share");
-    urlBox = document.createElement('p');
-    urlBox.setAttribute("role", "share-url");
-    urlBox.innerHTML = window.location.href.match(".+/")
-      + "gui?stream=true&autoplay=" + entry.id;
-    shareBtn.onclick = function(e) {
-      e.preventDefault();
-      e.stopPropagation();
-      if (urlBox) CopyToClipboard(urlBox);
-    };
-    song.appendChild(shareBtn);
-    if (urlBox) song.appendChild(urlBox);
-  }
+  // var shareBtn = null;
+  // var urlBox = null;
+  // if (!isPlaying) {
+  //   //shareBtn = document.querySelector('[role="share"]');
+  //   shareBtn = song.querySelector('[role="share"]');
+  //   if (shareBtn) song.removeChild(shareBtn);
+  //   urlBox = song.querySelector('[role="share-url"]');
+  //   if (urlBox) song.removeChild(urlBox);
+  // } else {
+  //   shareBtn = document.createElement('a');
+  //   shareBtn.innerHTML = "share";
+  //   shareBtn.setAttribute("href", "#");
+  //   shareBtn.setAttribute("role", "share");
+  //   urlBox = document.createElement('p');
+  //   urlBox.setAttribute("role", "share-url");
+  //   urlBox.innerHTML = window.location.href.match(".+/")
+  //     + "gui?stream=true&autoplay=" + entry.id;
+  //   shareBtn.onclick = function(e) {
+  //     e.preventDefault();
+  //     e.stopPropagation();
+  //     if (urlBox) CopyToClipboard(urlBox);
+  //   };
+  //   song.appendChild(shareBtn);
+  //   if (urlBox) song.appendChild(urlBox);
+  // }
 }
 
 ImageLibrary.prototype.viewImage = function(songEntry, offset) {
@@ -559,7 +559,7 @@ ImageLibrary.prototype.viewImage = function(songEntry, offset) {
     el.style.backgroundColor = "black";
   });
   effect('[role="background-cover"]', function (el) {
-      el.style.backgroundImage = 'url("' + path + '")';
+    el.style.backgroundImage = 'url("' + path + '")';
   });
   
   this.toggleNowPlaying(true, false);
